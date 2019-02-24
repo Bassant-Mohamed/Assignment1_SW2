@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>2DRAB WDA3AK</title>
+<meta charset="utf-8">
+
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<script>
+      fetch("https://api.thecatapi.com/v1/images/search", {
+        headers: new Headers({
+          "x-api-key": "6a279be6-e4b3-448f-9e1f-e72b3d3a3f60"
+        })
+      })
+        .then(response => response.json())
+        .then(function(res) {
+          var img = document.querySelector("#url2");
+          img.src = res[0].url;
+        });
+ </script>
+<section id="video" class="home">
+  <h1>2DRAB WDA3AK</h1>
+</section>
+<section id="main-content">
+  <h1>What about this ?</h1><img id="url2" />
+</section>
+<footer>
+  <div class="copyright"><small>Copyright. All Rights Reserved | by MBT</a>.</small></div>
+</footer>
+</body>
+</html>
