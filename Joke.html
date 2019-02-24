@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>2DRAB WDA3AK</title>
+<meta charset="utf-8">
+
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<script>
+var request = new XMLHttpRequest();
+
+request.open('GET','https://geek-jokes.sameerkumar.website/api', true);
+request.onload = function () {
+
+  var D = JSON.parse(this.response);
+
+  if (request.status >= 200 && request.status < 400) {
+
+      console.log(D);
+        var temp1 = D;
+          var third = document.getElementById("temp1");
+          third.innerHTML = temp1;
+
+  } else {
+    console.log('error');
+  }
+}
+request.send();
+</script>
+<section id="video" class="home">
+  <h1>2DRAB WDA3AK</h1>
+</section>
+<section id="main-content">
+  <h1>Jokes can help you to feel better ^_^ :</h1><h1 id="temp1"></h1>
+</section>
+<footer>
+  <div class="copyright"><small>Copyright. All Rights Reserved | by MBT</a>.</small></div>
+</footer>
+</body>
+</html>
