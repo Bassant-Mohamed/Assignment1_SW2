@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>2DRAB WDA3AK</title>
+<meta charset="utf-8">
+
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+
+<section id="video" class="home">
+  <h1>2DRAB WDA3AK</h1>
+</section>
+<section id="main-content">
+  <h1 id="temp" value="YOUR UPDATED FEEDBACK">YOUR UPDATED FEEDBACK</h1>
+  
+<script>
+      //UPDATE
+	  var text = document.getElementById("temp").innerHTML;
+	  var x="newfeedback"
+      fetch("https://jsonplaceholder.typicode.com/posts/1", {
+        method: "PUT",
+        body: JSON.stringify({
+          id: 101,
+          title: x,
+          body: text,
+          userId: 1
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+        }
+      })
+        .then(response => response.json())
+        .then(json => console.log(json));
+
+      /* will return
+{
+  id: 1,
+  title: 'foo',
+  body: 'bar',
+  userId: 1
+}
+*/
+</script>
+</section>
+<footer>
+  <div class="copyright"><small>Copyright. All Rights Reserved | by MBT</a>.</small></div>
+</footer>
+</body>
+</html>
