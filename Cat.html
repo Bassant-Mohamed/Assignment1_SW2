@@ -7,6 +7,18 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+<section id="video" class="home">
+	<h1>2DRAB WDA3AK</h1>
+
+</section>
+<section id="main-content">
+    <h1>What about this ?</h1><img id="url2" />
+	<br>
+	<h1>Choose your cat</h1>
+	<input type="file" id="img" value="choose your cat"/>
+	<img id="urll" />
+
+</section>
 <script>
       fetch("https://api.thecatapi.com/v1/images/search", {
         headers: new Headers({
@@ -19,12 +31,46 @@
           img.src = res[0].url;
         });
  </script>
-<section id="video" class="home">
-  <h1>2DRAB WDA3AK</h1>
-</section>
-<section id="main-content">
-  <h1>What about this ?</h1><img id="url2" />
-</section>
+ <script>
+      var image = document.querySelector("#img");
+      image.addEventListener("change", function(e) {
+        //   console.log(image.files);
+        upload(image.files[0]);
+      });
+      function upload(file) {
+        var data = new FormData();
+        data.append("file", file);
+
+        fetch("https://api.thecatapi.com/v1/images/upload", {
+          method: "POST",
+          body: data,
+
+          headers: {
+            "x-api-key": "6a279be6-e4b3-448f-9e1f-e72b3d3a3f60"
+          }
+        })
+          .then(response => response.json())
+          .then(json => {
+            getPhoto(json.id);
+          });
+      }
+      function getPhoto(id) {
+        fetch(`https://api.thecatapi.com/v1/images/${id}`, {
+          headers: new Headers({
+            "x-api-key": "6a279be6-e4b3-448f-9e1f-e72b3d3a3f60"
+          })
+        })
+          .then(response => response.json())
+          .then(function(res) {
+            var img = document.querySelector("#url2");
+            img.src = res.url;
+          });
+      }
+
+      //  getPhoto("2so");
+    </script>
+
+
 <footer>
   <div class="copyright"><small>Copyright. All Rights Reserved | by MBT</a>.</small></div>
 </footer>
